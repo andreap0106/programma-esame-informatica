@@ -10,8 +10,8 @@
 #include "errori.h"
 
 
-/* Tutte queste funzioni errore sono strutturate in modo tale, usando degli if/else, da testare tutti i casi e combinazioni di errore delle singole variabili
-   tra di loro per poi restituirne uno specifico */
+/* Tutte queste funzioni errore sono strutturate in modo tale, usando degli if/else, da testare tutti i casi e combinazioni di errore delle singole 
+variabili tra di loro per poi restituirne uno specifico */
 int funzione_errori_base_altezza(float altezza, float base)
 {
     int  errore = NO_ERRORI;
