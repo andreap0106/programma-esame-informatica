@@ -19,7 +19,6 @@ typedef struct{
     int valore_errore;
 } caratteristiche_figure_piane;
 
-
 typedef struct{
     char *nome_parametro;
     float valore;
