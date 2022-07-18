@@ -1,4 +1,4 @@
-# programma-esame-informatica-prova
+# programma-esame-informatica
 programma calcolo area/perimetro figure piane 
 
 #####
