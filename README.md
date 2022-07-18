@@ -2,7 +2,7 @@
 programma calcolo area/perimetro figure piane 
 
 #####
-# READ ME
+# READ ME
 
 Programma per il calcolo di area e perimetro di tutte le figure piane note compilato in C tramite Xcode
 
