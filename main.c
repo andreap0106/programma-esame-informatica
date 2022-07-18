@@ -37,13 +37,13 @@ int main()
     /* sono stati dichiarati un errore generico e altri relativi ad ogni singola figura in modo tale da restiuire quello generico nel caso di calcolo di piu figure (n>1 nel ciclo for) mentre nel caso di calcolo di figura singola (n=1 nel ciclo for) viene restituito un errore specifico secondo i codici definiti in "errori.h".
      Tutto ciò per ovviare al problema che nel ciclo for veniva restituitito alla fine l'errore dell'ultima figura soltanto andando a trascurare le altre (restituendo quindi un NO_ERROR anche se c'era un errore precedente nel ciclo */
     int errore = NO_ERRORI;
-    int errore_rettangolo = NO_ERRORI;
-    int errore_triangolo = NO_ERRORI;
-    int errore_trapezio = NO_ERRORI;
-    int errore_rombo = NO_ERRORI;
-    int errore_cerchio = NO_ERRORI;
-    int errore_quadrato = NO_ERRORI;
-    int errore_poligoni_regolari = NO_ERRORI;
+    int errore_rettangolo [MAX_DIM];
+    int errore_triangolo [MAX_DIM];
+    int errore_trapezio [MAX_DIM];
+    int errore_rombo [MAX_DIM];
+    int errore_cerchio [MAX_DIM];
+    int errore_quadrato [MAX_DIM];
+    int errore_poligoni_regolari [MAX_DIM];
 //definizione degli array delle struct
     //è stato definito un array di questa struct per stipare, ad ogni iterazione del ciclo for, la figura con tutte le sue caratteristiche (definite dalla struct) all'iesimo posto dell'array per un totale di 30(MAX_DIM) */
     caratteristiche_figure_piane FigurePiane [MAX_DIM];
@@ -105,10 +105,11 @@ int main()
                 parametro_1[i].valore = base;
                 parametro_2[i].nome_parametro = "Altezza";
                 parametro_2[i].valore = altezza;
+                FigurePiane[i].valore_errore = funzione_errori_base_altezza(altezza, base);
                 //qui come nelle funzioni delle altre figure sono stati definiti due volte con lo stesso valore due tipologie di errore: quello generico "errore" e quello speciofico relativo alla figura presa in esame dalla funzione "errore_rettangolo"
-                errore_rettangolo = funzione_errori_base_altezza(altezza, base);
-                errore = errore_rettangolo;
-                if (errore_rettangolo == NO_ERRORI)
+                errore = FigurePiane[i].valore_errore;
+                errore_rettangolo[i] = FigurePiane[i].valore_errore;
+                if (errore_rettangolo[i] == NO_ERRORI)
                 {
                     FigurePiane[i].stato_errore = "Nessun Errore";
                     FigurePiane[i].area = base * altezza;
@@ -157,9 +158,10 @@ int main()
                     parametro_3[i].valore = lato_1;
                     parametro_4[i].nome_parametro = "Lato 2";
                     parametro_4[i].valore = lato_2;
-                    errore_triangolo = funzione_errori_base_altezza_lati(altezza, base, lato_1, lato_2);
-                    errore = errore_triangolo;
-                    if (errore_triangolo == NO_ERRORI)
+                    FigurePiane[i].valore_errore = funzione_errori_base_altezza_lati(altezza, base, lato_1, lato_2);
+                    errore_triangolo[i] = FigurePiane[i].valore_errore;
+                    errore = FigurePiane[i].valore_errore;
+                    if (errore_triangolo[i] == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
                         FigurePiane[i].area = (base * altezza)/2;
@@ -193,9 +195,10 @@ int main()
                     parametro_2[i].valore = cateto_2;
                     parametro_3[i].nome_parametro = "Ipotenusa";
                     parametro_3[i].valore = ipotenusa;
-                    errore_triangolo = funzione_errori_cateti_ipotenusa(cateto_1, cateto_2, ipotenusa);
-                    errore = errore_triangolo;
-                    if (errore_triangolo == NO_ERRORI)
+                    FigurePiane[i].valore_errore = funzione_errori_cateti_ipotenusa(cateto_1, cateto_2, ipotenusa);
+                    errore = FigurePiane[i].valore_errore;
+                    errore_triangolo[i] = FigurePiane[i].valore_errore;
+                    if (errore_triangolo[i] == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
                         FigurePiane[i].area = (cateto_1 * cateto_2)/2;
@@ -230,8 +233,9 @@ int main()
                 parametro_2[i].valore = base_minore;
                 parametro_3[i].nome_parametro = "Altezza";
                 parametro_3[i].valore = altezza;
-                errore_trapezio = funzione_errore_trapezio(base_maggiore, base_minore, altezza);
-                errore = errore_trapezio;
+                FigurePiane[i].valore_errore = funzione_errore_trapezio(base_maggiore, base_minore, altezza);
+                errore = FigurePiane[i].valore_errore;
+                errore_trapezio[i] = FigurePiane[i].valore_errore;
                 if (errore == NO_ERRORI)
                 {
                     FigurePiane[i].stato_errore = "Nessun Errore";
@@ -269,8 +273,9 @@ int main()
                     parametro_1[i].valore = diagonale_maggiore;
                     parametro_2[i].nome_parametro = "Diagonale minore";
                     parametro_2[i].valore = diagonale_minore;
-                    errore_rombo = funzione_errori_diagonali(diagonale_maggiore, diagonale_minore);
-                    errore = errore_rombo;
+                    FigurePiane[i].valore_errore = funzione_errori_diagonali(diagonale_maggiore, diagonale_minore);
+                    errore = FigurePiane[i].valore_errore;
+                    errore_rombo[i] = FigurePiane[i].valore_errore;
                     if (errore == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
@@ -290,8 +295,9 @@ int main()
                     scanf("%f", &lato_rombo);
                     printf("Inserisci altezza relativa\n");
                     scanf("%f", &altezza_relativa);
-                    errore_rombo = funzione_errori_lato_altezza(altezza_relativa, lato_rombo);
-                    errore = errore_rombo;
+                    FigurePiane[i].valore_errore = funzione_errori_lato_altezza(altezza_relativa, lato_rombo);
+                    errore = FigurePiane[i].valore_errore;
+                    errore_rombo[i] = FigurePiane[i].valore_errore;
                     if (errore == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
@@ -318,20 +324,18 @@ int main()
                 if (lato_quadrato <= 0)
                 {
                     printf("Lato deve essere un valore positivo \nLato inserito: %f\n", lato_quadrato);
-                    errore_quadrato = ERR_LATO;
-                    errore = ERR_LATO;
+                    FigurePiane[i].valore_errore = ERR_LATO;
+                    errore_quadrato[i] = FigurePiane[i].valore_errore;
+                    errore = FigurePiane[i].valore_errore;
+                    FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
+                    FigurePiane[i].area = errore;
+                    FigurePiane[i].perimetro = errore;
                 }
-                if (errore_quadrato == NO_ERRORI)
+                else
                 {
                     FigurePiane[i].stato_errore = "Nessun Errore";
                     FigurePiane[i].area = lato_quadrato * lato_quadrato;
                     FigurePiane[i].perimetro = lato_quadrato * 4;
-                }
-                else
-                {
-                    FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
-                    FigurePiane[i].area = errore;
-                    FigurePiane[i].perimetro = errore;
                 }
             }
     
@@ -341,24 +345,27 @@ int main()
                 FigurePiane[i].nome_figura = "CERCHIO";
                 printf("Inserisci raggio\n");
                 scanf("%f", &raggio);
-                diametro = raggio + raggio;
                 parametro_1[i].nome_parametro = "Raggio";
                 parametro_1[i].valore = raggio;
                 parametro_2[i].nome_parametro = "Diametro";
-                parametro_2[i].valore = diametro;
+                
                 if (raggio <= 0)
                 {
-                    errore_cerchio = ERR_RAGGIO;
-                    errore = ERR_RAGGIO;
+                    FigurePiane[i].valore_errore = ERR_RAGGIO;
+                    errore_cerchio[i] = FigurePiane[i].valore_errore;
+                    errore = FigurePiane[i].valore_errore;
                     FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
                     FigurePiane[i].area = errore;
                     FigurePiane[i].perimetro = errore;
+                    diametro = 0;
                 }
                 else
                 {
                     FigurePiane[i].stato_errore = "Nessun Errore";
                     FigurePiane[i].area = pi*raggio*raggio;
                     FigurePiane[i].perimetro = 2*pi*raggio;
+                    diametro = raggio + raggio;
+                    parametro_2[i].valore = diametro;
                 }
             }
             
@@ -385,11 +392,14 @@ int main()
                 else
                 {
                     FigurePiane[i].nome_figura = "POLIGONO";
-                    errore_poligoni_regolari = ERR_LATO;
-                    errore = ERR_LATO;
+                    FigurePiane[i].valore_errore = ERR_LATO;
+                    errore_poligoni_regolari[i] = FigurePiane[i].valore_errore;
+                    errore = FigurePiane[i].valore_errore;
                     FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
                     FigurePiane[i].area = errore;
                     FigurePiane[i].perimetro = errore;
+                    parametro_1[i].nome_parametro = "Lato";
+                    parametro_1[i].valore = lato_poligono;
                 }
             }
         }
@@ -409,7 +419,7 @@ int main()
     //qui è stata usata la variabile n dichiarata fuori dal ciclo for e dal ciclo do/while per poter scegliere la condizione in cui restituire solo un errore generico (0/-1) nel caso anche solo una figura abbia restituito un qualsiasi errore diverso da NO_ERRORI oppure un errore specifico (nel caso di n=1)
     if (n > 1)
     {
-        if (errore_triangolo != NO_ERRORI || errore_rettangolo != NO_ERRORI || errore_trapezio != NO_ERRORI || errore_rombo != NO_ERRORI || errore_quadrato != NO_ERRORI || errore_cerchio != NO_ERRORI || errore_poligoni_regolari != NO_ERRORI)
+        if (errore_triangolo[i] != NO_ERRORI || errore_rettangolo[i] != NO_ERRORI || errore_trapezio[i] != NO_ERRORI || errore_rombo[i] != NO_ERRORI || errore_quadrato[i] != NO_ERRORI || errore_cerchio[i] != NO_ERRORI || errore_poligoni_regolari[i] != NO_ERRORI)
         {
             return ERR_GENERICO;
         }
@@ -423,6 +433,7 @@ int main()
         return errore;
     }
 }
+
 
 
     
