@@ -34,9 +34,16 @@ int main()
     float diametro;
     const float pi = 3.141592;
 //dichiarazione e inizializzazione errore generico ed errori specifici per singole figure
-    /* sono stati dichiarati un errore generico e altri relativi ad ogni singola figura in modo tale da restiuire quello generico nel caso di calcolo di piu figure (n>1 nel ciclo for) mentre nel caso di calcolo di figura singola (n=1 nel ciclo for) viene restituito un errore specifico secondo i codici definiti in "errori.h".
-     Tutto ciò per ovviare al problema che nel ciclo for veniva restituitito alla fine l'errore dell'ultima figura soltanto andando a trascurare le altre (restituendo quindi un NO_ERROR anche se c'era un errore precedente nel ciclo */
+    /* sono stati dichiarati un errore generico e altri relativi ad ogni singola figura in modo tale da restiuire quello generico nel caso di calcolo 
+    di piu figure (n>1 nel ciclo for) mentre nel caso di calcolo di figura singola (n=1 nel ciclo for) viene restituito un errore specifico secondo i 
+    codici definiti in "errori.h".
+    Tutto ciò per ovviare al problema che nel ciclo for veniva restituitito alla fine l'errore dell'ultima figura soltanto andando a trascurare le altre 
+    (restituendo quindi un NO_ERROR anche se c'era un errore precedente nel ciclo */
     int errore = NO_ERRORI;
+    /* gli errori specicifi sono stati successivamente trasformati in array per ovviare al problema della sovrascrittura degli stessi quando si
+    sceglievano due o più figure uguali: l'errore dell'ultima calcolata sovrascriveva quello delle precedenti portando talvolta a ritornare 0 (NO_ERRORI)
+    quando in realtà le figure precedenti riportavano effettivamente degli errori. 
+    Con gli array[MAX_DIM] si riserva un posto iesimo [i] all'errore per ciascuna figura anche se dello stesso tipo */
     int errore_rettangolo [MAX_DIM];
     int errore_triangolo [MAX_DIM];
     int errore_trapezio [MAX_DIM];
@@ -45,11 +52,13 @@ int main()
     int errore_quadrato [MAX_DIM];
     int errore_poligoni_regolari [MAX_DIM];
 //definizione degli array delle struct
-    //è stato definito un array di questa struct per stipare, ad ogni iterazione del ciclo for, la figura con tutte le sue caratteristiche (definite dalla struct) all'iesimo posto dell'array per un totale di 30(MAX_DIM) */
+    /* è stato definito un array di questa struct per stipare, ad ogni iterazione del ciclo for, la figura con tutte le sue caratteristiche 
+    (definite dalla struct) all'iesimo posto dell'array per un totale di 30(MAX_DIM) */
     caratteristiche_figure_piane FigurePiane [MAX_DIM];
     /* array delle struct di 4 parametri generci che a seconda della figura in cui vengono richiamati assumono nomi e valori specifici.
      Es. nel rettangolo: parametro_1[i].nome_parametro = "Base", parametro_2[i].nome_parametro = "Altezza".
-     La modalità di array permette ancora questa volta di associare, ad ogni iterazione del ciclo for, le caratteristiche dettate dalla struct all'iesimo posto dell'array */
+     La modalità di array permette ancora questa volta di associare, ad ogni iterazione del ciclo for, le caratteristiche dettate dalla struct 
+     all'iesimo posto dell'array */
     parametro_calcolo_area_perimetro parametro_1 [MAX_DIM];
     parametro_calcolo_area_perimetro parametro_2 [MAX_DIM];
     parametro_calcolo_area_perimetro parametro_3 [MAX_DIM];
@@ -106,7 +115,8 @@ int main()
                 parametro_2[i].nome_parametro = "Altezza";
                 parametro_2[i].valore = altezza;
                 FigurePiane[i].valore_errore = funzione_errori_base_altezza(altezza, base);
-                //qui come nelle funzioni delle altre figure sono stati definiti due volte con lo stesso valore due tipologie di errore: quello generico "errore" e quello speciofico relativo alla figura presa in esame dalla funzione "errore_rettangolo"
+                /* qui come nelle funzioni delle altre figure sono stati definiti due volte con lo stesso valore due tipologie di errore: quello 
+                generico "errore" e quello specifico relativo alla figura presa in esame dalla funzione "errore_rettangolo" */
                 errore = FigurePiane[i].valore_errore;
                 errore_rettangolo[i] = FigurePiane[i].valore_errore;
                 if (errore_rettangolo[i] == NO_ERRORI)
@@ -117,14 +127,16 @@ int main()
                 }
                 else
                 {
-                    /* in questo caso è stato inserito un else nel caso in cui le funzioni errore (dichiarate e definite nell'"errori.h" e "errori.c") restituiscano qualcosa di diverso da NO_ERRORI.
+                    /* in questo caso è stato inserito un else nel caso in cui le funzioni errore (dichiarate e definite nell'"errori.h" e "errori.c") 
+                    restituiscano qualcosa di diverso da NO_ERRORI.
                     A questo punto area e perimetro della figura assumeranno i valori del codice errore corrispondente all'errore che si è verificato */
                     FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
                     FigurePiane[i].area = errore;
                     FigurePiane[i].perimetro = errore;
                 }
             }
-// L'APPROCCIO E TUTTE LE CONSIDERAZIONE APPENA FATTE PER QUESTO BLOCCO DI CODICE CHE PRENDE IN ESAME IL RETTANGOLO SONO STATE ADOTTATE, E QUINDI SONO DA RITENERSI VALIDE, ANCHE PER TUTTE LE ALTRE FIGURE DEL PROGRAMMA
+/* L'APPROCCIO E TUTTE LE CONSIDERAZIONE APPENA FATTE PER QUESTO BLOCCO DI CODICE CHE PRENDE IN ESAME IL RETTANGOLO SONO STATE ADOTTATE, 
+            E QUINDI SONO DA RITENERSI VALIDE, ANCHE PER TUTTE LE ALTRE FIGURE DEL PROGRAMMA */
             
             
         //figure come triangolo e rombo hanno due modalità diverse di calcolo area/perimetro utilizzando diverse variabili
@@ -405,10 +417,11 @@ int main()
         }
         
         printf("\nPremi invio per stampare man mano i risultati\n");
-        while( getchar() != '\n' );   //getchar utilizzato per avere un input prima di procedere alla stampa per maggiore pulizia del programma in esecuzione
+        while( getchar() != '\n' ); //getchar utilizzato per avere un input prima di procedere alla stampa per maggiore pulizia del programma in esecuzione
         for(i = 0; i < n && getchar(); i++)
         {
-            //stampa della figura numerata a secondda dell'iterazione del ciclo for (i+1) completa di nome, area, perimetro, stato errore ed eventuali parametri (1-4)
+            /* stampa della figura numerata a secondda dell'iterazione del ciclo for (i+1) completa di nome, area, perimetro, 
+            stato errore ed eventuali parametri (1-4 ) */
             printf("Figura %d: %s\nStato errore: %s\n Area: %f\n Perimetro: %f\n\t%s: %f\n\t%s: %f\n\t%s: %f\n\t%s: %f\n", i+1, FigurePiane[i].nome_figura, FigurePiane[i].stato_errore, FigurePiane[i].area, FigurePiane[i].perimetro, parametro_1[i].nome_parametro, parametro_1[i].valore, parametro_2[i].nome_parametro, parametro_2[i].valore, parametro_3[i].nome_parametro, parametro_3[i].valore, parametro_4[i].nome_parametro, parametro_4[i].valore);
         }
         printf("\nContinuare?");
@@ -416,7 +429,9 @@ int main()
         scanf("%d", &continuare_si_no);
     } while (continuare_si_no == 1);
     
-    //qui è stata usata la variabile n dichiarata fuori dal ciclo for e dal ciclo do/while per poter scegliere la condizione in cui restituire solo un errore generico (0/-1) nel caso anche solo una figura abbia restituito un qualsiasi errore diverso da NO_ERRORI oppure un errore specifico (nel caso di n=1)
+    /* qui è stata usata la variabile int n dichiarata fuori dal ciclo for e dal ciclo do/while per poter scegliere la condizione in cui
+    restituire solo un errore generico (0/-1) nel caso anche solo una figura abbia restituito un qualsiasi errore diverso da NO_ERRORI 
+    oppure un errore specifico (nel caso di n=1) */
     if (n > 1)
     {
         if (errore_triangolo[i] != NO_ERRORI || errore_rettangolo[i] != NO_ERRORI || errore_trapezio[i] != NO_ERRORI || errore_rombo[i] != NO_ERRORI || errore_quadrato[i] != NO_ERRORI || errore_cerchio[i] != NO_ERRORI || errore_poligoni_regolari[i] != NO_ERRORI)
