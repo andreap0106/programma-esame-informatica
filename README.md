@@ -42,5 +42,6 @@ Così facendo il programma interromperà gli inserimenti successivi, stamperà q
 
 
 GIT
+
 Per scaricare l'ultima versione del codice accedere a https://github.com al seguente link: 
 https://github.com/andreap0106/programma-esame-informatica
