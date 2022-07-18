@@ -414,7 +414,7 @@ int main()
         printf("\nContinuare?");
         printf("\n1: Sì, continua\n0: No, termina e ritorna l'errore\n");
         scanf("%d", &continuare_si_no);
-        } while (continuare_si_no == 1);
+    } while (continuare_si_no == 1);
     
     //qui è stata usata la variabile n dichiarata fuori dal ciclo for e dal ciclo do/while per poter scegliere la condizione in cui restituire solo un errore generico (0/-1) nel caso anche solo una figura abbia restituito un qualsiasi errore diverso da NO_ERRORI oppure un errore specifico (nel caso di n=1)
     if (n > 1)
