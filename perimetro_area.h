@@ -16,7 +16,9 @@ typedef struct{
     float perimetro;
     float area;
     char *stato_errore;
+    int valore_errore;
 } caratteristiche_figure_piane;
+
 
 typedef struct{
     char *nome_parametro;
