@@ -11,14 +11,12 @@ Nella cartella è presente sia il progetto Xcode (.xcodeproj) che CodeBlocks (.c
 
 
 
-
 ATTIVAZIONE E FUNZIONALITÀ DEL PROGRAMMA
 
 Una volta aperto il progetto ed eseguito, il programma chiederà di quante figure (n figure) si vuole eseguire le operazioni per area e perimetro per un massimo di 30 figure. 
 Figure disponibili:  rettangolo, triangolo, trapezio, rombo, quadrato, cerchio, poligoni regolari (fino al dodecagono).
 
 Una volta terminato il calcolo delle n figure scelte, il programma stamperà tutti i risultati con gli eventuali errori.
-
 
 
 
@@ -35,13 +33,11 @@ I vari codice errore sono definiti in "errore.h".
 
 
 
-
 INTERRUZIONE DEL PROGRAMMA IN CORSO
 
 È possibile interrompere l'esecuzione del programma inserendo "0" durante la selezione della figura da calcolare.
 
 Così facendo il programma interromperà gli inserimenti successivi, stamperà quelli precedentemente già inseriti e ritornerà al menù "Continuare? Sì/No" dove si potrà scegliere se continuare con un nuovo inserimento oppure terminare il programma e restituire l'errore (eventuale) secondo le modalità precedentemente descritte in "DIAGNOSTICHE DI ERRORE".
-
 
 
 
