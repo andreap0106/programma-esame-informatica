@@ -21,6 +21,7 @@ float perimetro_rombo_con_diagonali (float diagonale_maggiore, float diagonale_m
 
 
 
+
 //la funzione chiede se si vuole calcolare anche il perimetro e di che tipo di trapezio si tratta per poi procedere al calcolo di conseguenza
 float perimetro_trapezio (float base_magg, float base_min, float altezza_trapezio)
 {
