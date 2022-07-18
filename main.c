@@ -15,7 +15,8 @@
 int main()
 {
 //dichiarazione variabili che verranno usate per calcolare area e perimetro delle figure
-    //sono state dichiarate tutte all'inizio del main (e non in prossimità delle funzioni delle rispettive figure) poiché alcune variabili sono usate da più funzioni */
+    /* sono state dichiarate tutte all'inizio del main (e non in prossimità delle funzioni delle rispettive figure) poiché alcune variabili 
+    sono usate da più funzioni */
     float base;
     float altezza;
     float lato_1;
