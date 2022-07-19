@@ -183,7 +183,7 @@ int funzione_errore_trapezio(float base_maggiore, float base_minore, float altez
         }
         if (errore == ERR_ALTEZZA)
         {
-            printf("Base maggiore deve essere un valore positivo \nBase maggiore inserita: %fn", base_maggiore);
+            printf("Base maggiore deve essere un valore positivo \nBase maggiore inserita: %f\n", base_maggiore);
             errore = ERR_BASE_MAGG_ALTEZZA;
         }
     }
