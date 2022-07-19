@@ -10,7 +10,6 @@ In ogni caso è disponibile nella cartella anche il file main.c e vari .c e .h i
 
 
 
-
 ATTIVAZIONE E FUNZIONALITÀ DEL PROGRAMMA
 
 Una volta aperto il progetto ed eseguito, il programma chiederà di quante figure (n figure) si vuole eseguire le operazioni 
