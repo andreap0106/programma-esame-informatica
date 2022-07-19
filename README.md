@@ -7,7 +7,9 @@ programma calcolo area/perimetro figure piane
 Programma per il calcolo di area e perimetro di tutte le figure piane note compilato in C tramite Xcode
 
 Il programma è eseguibile tramite qualsiasi IDE per linguaggio C. 
-Nella cartella è presente il progetto Xcode (.xcodeproj), dunque sarà sufficiente aprire il progetto con il programma Xcode. In ogni caso è disponibile nella cartella anche il file main.c e vari .c e .h inclusi in esso.
+Nella cartella è presente sia il progetto Xcode (.xcodeproj) che CodeBlocks (.cbp), 
+dunque sarà sufficiente aprire il progetto con l'estensione corrispondente al programma con cui lo si vuole eseguire. 
+In ogni caso è disponibile nella cartella anche il file main.c e vari .c e .h inclusi in esso.
 
 
 ######
