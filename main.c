@@ -115,6 +115,10 @@ int main()
                 parametro_1[i].valore = base;
                 parametro_2[i].nome_parametro = "Altezza";
                 parametro_2[i].valore = altezza;
+                parametro_3[i].nome_parametro = "(NULL)";
+                parametro_3[i].valore = 0;
+                parametro_4[i].nome_parametro = "(NULL)";
+                parametro_4[i].valore = 0;
                 FigurePiane[i].valore_errore = funzione_errori_base_altezza(altezza, base);
                 /* qui come nelle funzioni delle altre figure sono stati definiti due volte con lo stesso valore due tipologie di errore: quello 
                 generico "errore" e quello specifico relativo alla figura presa in esame dalla funzione "errore_rettangolo" */
@@ -208,6 +212,8 @@ int main()
                     parametro_2[i].valore = cateto_2;
                     parametro_3[i].nome_parametro = "Ipotenusa";
                     parametro_3[i].valore = ipotenusa;
+                    parametro_4[i].nome_parametro = "(NULL)";
+                    parametro_4[i].valore = 0;
                     FigurePiane[i].valore_errore = funzione_errori_cateti_ipotenusa(cateto_1, cateto_2, ipotenusa);
                     errore = FigurePiane[i].valore_errore;
                     errore_triangolo[i] = FigurePiane[i].valore_errore;
@@ -246,6 +252,8 @@ int main()
                 parametro_2[i].valore = base_minore;
                 parametro_3[i].nome_parametro = "Altezza";
                 parametro_3[i].valore = altezza;
+                parametro_4[i].nome_parametro = "(NULL)";
+                parametro_4[i].valore = 0;
                 FigurePiane[i].valore_errore = funzione_errore_trapezio(base_maggiore, base_minore, altezza);
                 errore = FigurePiane[i].valore_errore;
                 errore_trapezio[i] = FigurePiane[i].valore_errore;
@@ -286,6 +294,10 @@ int main()
                     parametro_1[i].valore = diagonale_maggiore;
                     parametro_2[i].nome_parametro = "Diagonale minore";
                     parametro_2[i].valore = diagonale_minore;
+                    parametro_3[i].nome_parametro = "(NULL)";
+                    parametro_3[i].valore = 0;
+                    parametro_4[i].nome_parametro = "(NULL)";
+                    parametro_4[i].valore = 0;
                     FigurePiane[i].valore_errore = funzione_errori_diagonali(diagonale_maggiore, diagonale_minore);
                     errore = FigurePiane[i].valore_errore;
                     errore_rombo[i] = FigurePiane[i].valore_errore;
@@ -312,6 +324,10 @@ int main()
                     parametro_1[i].valore = lato_rombo;
                     parametro_2[i].nome_parametro = "Altezza relativo al rombo";
                     parametro_2[i].valore = altezza_relativa;
+                    parametro_3[i].nome_parametro = "(NULL)";
+                    parametro_3[i].valore = 0;
+                    parametro_4[i].nome_parametro = "(NULL)";
+                    parametro_4[i].valore = 0;
                     FigurePiane[i].valore_errore = funzione_errori_lato_altezza(altezza_relativa, lato_rombo);
                     errore = FigurePiane[i].valore_errore;
                     errore_rombo[i] = FigurePiane[i].valore_errore;
@@ -338,6 +354,12 @@ int main()
                 scanf("%f", &lato_quadrato);
                 parametro_1[i].nome_parametro = "Lato";
                 parametro_1[i].valore = lato_quadrato;
+                parametro_2[i].nome_parametro = "(NULL)";
+                parametro_2[i].valore = 0;
+                parametro_3[i].nome_parametro = "(NULL)";
+                parametro_3[i].valore = 0;
+                parametro_4[i].nome_parametro = "(NULL)";
+                parametro_4[i].valore = 0;
                 if (lato_quadrato <= 0)
                 {
                     printf("Lato deve essere un valore positivo \nLato inserito: %f\n", lato_quadrato);
@@ -362,9 +384,13 @@ int main()
                 FigurePiane[i].nome_figura = "CERCHIO";
                 printf("Inserisci raggio\n");
                 scanf("%f", &raggio);
-                parametro_1[i].nome_parametro = "Raggio";
+               parametro_1[i].nome_parametro = "Raggio";
                 parametro_1[i].valore = raggio;
                 parametro_2[i].nome_parametro = "Diametro";
+                parametro_3[i].nome_parametro = "(NULL)";
+                parametro_3[i].valore = 0;
+                parametro_4[i].nome_parametro = "(NULL)";
+                parametro_4[i].valore = 0;
                 
                 if (raggio <= 0)
                 {
@@ -391,6 +417,14 @@ int main()
             float lato_poligono;
             if (scelta_figura_geometrica == POLIGONI_REGOLARI)
             {
+                parametro_1[i].nome_parametro = "Lato";
+                parametro_1[i].valore = lato_poligono;
+                parametro_2[i].nome_parametro = "(NULL)";
+                parametro_2[i].valore = 0;
+                parametro_3[i].nome_parametro = "(NULL)";
+                parametro_3[i].valore = 0;
+                parametro_4[i].nome_parametro = "(NULL)";
+                parametro_4[i].valore = 0;
                 do
                 {
                     printf("Quanti lati ha il poligono regolare (MAX 12)?\n");
