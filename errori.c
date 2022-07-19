@@ -56,7 +56,7 @@ int funzione_errori_base_altezza_lati(float altezza, float base, float lato1, fl
         }
         if (errore == ERR_ALTEZZA)
         {
-            printf("Base deve essere un valore positivo \nBase inserita: %fn", base);
+            printf("Base deve essere un valore positivo \nBase inserita: %f\n", base);
             errore = ERR_BASE_ALTEZZA;
         }
     }
@@ -106,7 +106,7 @@ int funzione_errori_cateti_ipotenusa(float cateto1, float cateto2, float ipotenu
         }
         if (errore == ERR_CATETO_1)
         {
-            printf("Cateto 2 deve essere un valore positivo \nCateto inserito: %fn", cateto2);
+            printf("Cateto 2 deve essere un valore positivo \nCateto inserito: %f\n", cateto2);
             errore = ERR_CATETI;
         }
     }
