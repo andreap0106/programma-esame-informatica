@@ -308,6 +308,10 @@ int main()
                     scanf("%f", &lato_rombo);
                     printf("Inserisci altezza relativa\n");
                     scanf("%f", &altezza_relativa);
+                    parametro_1[i].nome_parametro = "Lato rombo";
+                    parametro_1[i].valore = lato_rombo;
+                    parametro_2[i].nome_parametro = "Altezza relativo al rombo";
+                    parametro_2[i].valore = altezza_relativa;
                     FigurePiane[i].valore_errore = funzione_errori_lato_altezza(altezza_relativa, lato_rombo);
                     errore = FigurePiane[i].valore_errore;
                     errore_rombo[i] = FigurePiane[i].valore_errore;
