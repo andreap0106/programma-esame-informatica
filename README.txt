@@ -4,7 +4,7 @@ READ ME
 Programma per il calcolo di area e perimetro di tutte le figure piane note compilato in C tramite Xcode
 
 Il programma è eseguibile tramite qualsiasi IDE per linguaggio C. 
-Nella cartella è presente sia il progetto Xcode (.xcodeproj) che CodeBlocks (.cbp), 
+Nella cartella è presente sia il progetto Xcode (.xcodeproj) che la versione CodeBlocks (.cbp), 
 dunque sarà sufficiente aprire il progetto con l'estensione corrispondente al programma con cui lo si vuole eseguire. 
 In ogni caso è disponibile nella cartella anche il file main.c e vari .c e .h inclusi in esso.
 
@@ -13,7 +13,7 @@ In ogni caso è disponibile nella cartella anche il file main.c e vari .c e .h i
 ATTIVAZIONE E FUNZIONALITÀ DEL PROGRAMMA
 
 Una volta aperto il progetto ed eseguito, il programma chiederà di quante figure (n figure) si vuole eseguire le operazioni 
-per area e perimetro per un massimo di 30 figure. 
+per area e perimetro per un massimo di 20 figure. 
 Figure disponibili:  rettangolo, triangolo, trapezio, rombo, quadrato, cerchio, poligoni regolari (fino al dodecagono).
 
 Una volta terminato il calcolo delle n figure scelte, il programma stamperà tutti i risultati con gli eventuali errori.
