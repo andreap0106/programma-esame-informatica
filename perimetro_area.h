@@ -27,6 +27,6 @@ typedef struct{
 
 float perimetro_rombo_con_diagonali (float diagonale_maggiore, float diagonale_minore);
 float perimetro_trapezio (float base_magg, float base_min, float altezza_trapezio);
-void perimetro_area_poligoni (float lato_poligono, int lati_poligono, int i, caratteristiche_figure_piane *array_figure_piane, parametro_calcolo_area_perimetro *array_parametro);
+void perimetro_area_poligoni (float lato_poligono, unsigned int lati_poligono, int i, caratteristiche_figure_piane *array_figure_piane, parametro_calcolo_area_perimetro *array_parametro);
 
 #endif /* perimetro_area_h */
