@@ -80,7 +80,7 @@ int main()
                 {
                     printf("INSERIRE UN VALORE DELLA LISTA\n");
                 }
-            } while (scelta_figura_geometrica < 0 || scelta_figura_geometrica > 7);
+            } while (scelta_figura_geometrica < 1 || scelta_figura_geometrica > 7);
             const unsigned int RETTANGOLO = 1;
             const unsigned int TRIANGOLO = 2;
             const unsigned int TRAPEZIO = 3;
