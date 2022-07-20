@@ -1,4 +1,4 @@
-﻿#####
+#####
 READ ME
 
 Programma per il calcolo di area e perimetro di tutte le figure piane note compilato in C tramite Xcode
@@ -31,16 +31,6 @@ Se si desidera che il programma restituisca un errore specifico al termine dell'
 calcolare la singola figura della quale è stato reso noto precedentemente esserci un errore tra il calcolo delle n figure.
 
 I vari codice errore sono definiti in "errore.h".
-
-
-
-INTERRUZIONE DEL PROGRAMMA IN CORSO
-
-È possibile interrompere l'esecuzione del programma inserendo "0" durante la selezione della figura da calcolare.
-
-Così facendo il programma interromperà gli inserimenti successivi, stamperà quelli precedentemente già inseriti 
-e ritornerà al menù "Continuare? Sì/No" dove si potrà scegliere se continuare con un nuovo inserimento oppure terminare
-il programma e restituire l'errore (eventuale) secondo le modalità precedentemente descritte in "DIAGNOSTICHE DI ERRORE".
 
 
 
