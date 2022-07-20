@@ -7,7 +7,7 @@
 #ifndef perimetro_area_h
 #define perimetro_area_h
 
-#define MAX_DIM                  30
+#define MAX_DIM                  20
 #define DIM_NFISSO               10
 
 
