@@ -76,7 +76,7 @@ int main()
                 printf("Di quale figura vuoi calcolare area e perimetro?\n");
                 printf("1: Rettangolo\n2: Triangolo\n3: Trapezio\n4: Rombo\n5: Quadrato\n6: Cerchio\n7: Poligoni regolari\n");
                 scanf("%d", &scelta_figura_geometrica);
-                if (scelta_figura_geometrica < 0 || scelta_figura_geometrica > 7)
+                if (scelta_figura_geometrica < 1 || scelta_figura_geometrica > 7)
                 {
                     printf("INSERIRE UN VALORE DELLA LISTA\n");
                 }
@@ -88,14 +88,8 @@ int main()
             const unsigned int QUADRATO = 5;
             const unsigned int CERCHIO = 6;
             const unsigned int POLIGONI_REGOLARI = 7;
-            const unsigned int TERMINA = 0;
-            //inserendo 0 durante la selezione della figura verranno interrotti gli inserimenti successivi e stampati solo i precedenti
-            if (scelta_figura_geometrica == TERMINA)
-            {
-                break;
-            }
     
-            
+         
             if (scelta_figura_geometrica == RETTANGOLO)
             {
                 FigurePiane[i].nome_figura = "RETTANGOLO";  //l'iesima figura calcolata avrà nome rettangolo nella stampa finale
