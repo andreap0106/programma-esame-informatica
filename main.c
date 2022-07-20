@@ -75,7 +75,7 @@ int main()
             {
                 printf("Di quale figura vuoi calcolare area e perimetro?\n");
                 printf("1: Rettangolo\n2: Triangolo\n3: Trapezio\n4: Rombo\n5: Quadrato\n6: Cerchio\n7: Poligoni regolari\n");
-                scanf("%d", &scelta_figura_geometrica);
+                scanf("%u", &scelta_figura_geometrica);
                 if (scelta_figura_geometrica < 1 || scelta_figura_geometrica > 7)
                 {
                     printf("INSERIRE UN VALORE DELLA LISTA\n");
@@ -140,7 +140,7 @@ int main()
                 {
                 printf("In che modo vuoi calcolare l'area?\n");
                 printf("1: Con base e altezza\n2: Con i cateti\n");
-                scanf("%d", &scelta_area_triangolo);
+                scanf("%u", &scelta_area_triangolo);
                 } while (scelta_area_triangolo != 1 && scelta_area_triangolo != 2);
                 if (scelta_area_triangolo == area_base_altezza )
                 {
@@ -264,7 +264,7 @@ int main()
                 {
                 printf("In che modo vuoi calcolare l'area?\n");
                 printf("1: Con le diagonali\n2: Con lato e altezza relativa\n");
-                scanf("%d", &scelta_area_rombo);
+                scanf("%u", &scelta_area_rombo);
                 } while (scelta_area_rombo != 1 && scelta_area_rombo != 2);
                 if (scelta_area_rombo == area_diagonali)
                 {
@@ -406,7 +406,7 @@ int main()
                 do
                 {
                     printf("Quanti lati ha il poligono regolare (MAX 12)?\n");
-                    scanf("%d", &lati_poligono );
+                    scanf("%u", &lati_poligono );
                     if (lati_poligono <= 2 || lati_poligono > 12)
                     {
                         printf("Non e' un poligono oppure è stata definita una figura con più di 12 lati. Riprova.\n");
@@ -442,7 +442,7 @@ int main()
         }
         printf("\nContinuare?");
         printf("\n1: Sì, continua\n0: No, termina e ritorna l'errore\n");
-        scanf("%d", &continuare_si_no);
+        scanf("%u", &continuare_si_no);
     } while (continuare_si_no == 1);
     
     /* qui è stata usata la variabile int n dichiarata fuori dal ciclo for e dal ciclo do/while per poter scegliere la condizione in cui
