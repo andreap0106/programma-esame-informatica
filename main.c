@@ -108,8 +108,6 @@ int main()
                 parametro_4[i].nome_parametro = "(NULL)";
                 parametro_4[i].valore = 0;
                 FigurePiane[i].valore_errore = funzione_errori_base_altezza(altezza, base);
-                /* qui come nelle funzioni delle altre figure sono stati definiti due volte con lo stesso valore due tipologie di errore: quello 
-                generico "errore" e quello specifico relativo alla figura presa in esame dalla funzione "errore_rettangolo" */
                 errore = FigurePiane[i].valore_errore;
                 if (errore == NO_ERRORI)
                 {
