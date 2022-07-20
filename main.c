@@ -10,7 +10,7 @@
 #include "errori.h"
 #include "perimetro_area.h"
 
-#define MAX_DIM         30
+#define MAX_DIM         20
 
 int main()
 {
@@ -35,27 +35,21 @@ int main()
     float diametro;
     const float pi = 3.141592;
 //dichiarazione e inizializzazione errore generico ed errori specifici per singole figure
-    /* sono stati dichiarati un errore generico e altri relativi ad ogni singola figura in modo tale da restiuire quello generico nel caso di calcolo 
-    di piu figure (n>1 nel ciclo for) mentre nel caso di calcolo di figura singola (n=1 nel ciclo for) viene restituito un errore specifico secondo i 
-    codici definiti in "errori.h".
-    Tutto ciò per ovviare al problema che nel ciclo for veniva restituitito alla fine l'errore dell'ultima figura soltanto andando a trascurare le altre 
-    (restituendo quindi un NO_ERROR anche se c'era un errore precedente nel ciclo */
+    /* sono stati dichiarati un errore generico e un altro come caratteristica della struct in modo tale da restiuire quello generico nel caso di calcolo 
+     di piu figure (n>1 nel ciclo for) mentre nel caso di calcolo di figura singola (n=1 nel ciclo for) viene restituito un errore specifico secondo i 
+     codici definiti in "errori.h". Tutto ciò per ovviare al problema che nel ciclo for veniva restituitito alla fine l'errore dell'ultima figura soltanto 
+     andando a trascurare le altre (restituendo quindi un NO_ERROR anche se c'era un errore precedente nel ciclo */
     int errore = NO_ERRORI;
-    /* gli errori specicifi sono stati successivamente trasformati in array per ovviare al problema della sovrascrittura degli stessi quando si
-    sceglievano due o più figure uguali: l'errore dell'ultima calcolata sovrascriveva quello delle precedenti portando talvolta a ritornare 0 (NO_ERRORI)
-    quando in realtà le figure precedenti riportavano effettivamente degli errori. 
-    Con gli array[MAX_DIM] si riserva un posto iesimo [i] all'errore per ciascuna figura anche se dello stesso tipo */
-    int errore_rettangolo [MAX_DIM];
-    int errore_triangolo [MAX_DIM];
-    int errore_trapezio [MAX_DIM];
-    int errore_rombo [MAX_DIM];
-    int errore_cerchio [MAX_DIM];
-    int errore_quadrato [MAX_DIM];
-    int errore_poligoni_regolari [MAX_DIM];
+    
+    /* l'errore definito nella struct, essendo una caratteristica della struct FigurePiane definita come array, permette di ovviare al problema 
+       della sovrascrittura degli stessi quando si sceglievano due o più figure uguali: l'errore dell'ultima calcolata sovrascriveva quello delle 
+       precedenti portando talvolta a ritornare 0 (NO_ERRORI) quando in realtà le figure precedenti riportavano effettivamente degli errori.
+       Con l'array[MAX_DIM] si riserva un posto iesimo [i] all'errore per ciascuna figura anche se dello stesso tipo */
+
 //definizione degli array delle struct
     /* è stato definito un array di questa struct per stipare, ad ogni iterazione del ciclo for, la figura con tutte le sue caratteristiche 
-    (definite dalla struct) all'iesimo posto dell'array per un totale di 30(MAX_DIM) */
-    caratteristiche_figure_piane FigurePiane [MAX_DIM];
+    (definite dalla struct) all'iesimo posto dell'array per un totale di 20(MAX_DIM) */
+    caratteristiche_figure_piane FigurePiane [MAX_DIM] = {0};
     /* array delle struct di 4 parametri generci che a seconda della figura in cui vengono richiamati assumono nomi e valori specifici.
      Es. nel rettangolo: parametro_1[i].nome_parametro = "Base", parametro_2[i].nome_parametro = "Altezza".
      La modalità di array permette ancora questa volta di associare, ad ogni iterazione del ciclo for, le caratteristiche dettate dalla struct 
@@ -123,8 +117,7 @@ int main()
                 /* qui come nelle funzioni delle altre figure sono stati definiti due volte con lo stesso valore due tipologie di errore: quello 
                 generico "errore" e quello specifico relativo alla figura presa in esame dalla funzione "errore_rettangolo" */
                 errore = FigurePiane[i].valore_errore;
-                errore_rettangolo[i] = FigurePiane[i].valore_errore;
-                if (errore_rettangolo[i] == NO_ERRORI)
+                if (errore == NO_ERRORI)
                 {
                     FigurePiane[i].stato_errore = "Nessun Errore";
                     FigurePiane[i].area = base * altezza;
@@ -176,9 +169,8 @@ int main()
                     parametro_4[i].nome_parametro = "Lato 2";
                     parametro_4[i].valore = lato_2;
                     FigurePiane[i].valore_errore = funzione_errori_base_altezza_lati(altezza, base, lato_1, lato_2);
-                    errore_triangolo[i] = FigurePiane[i].valore_errore;
                     errore = FigurePiane[i].valore_errore;
-                    if (errore_triangolo[i] == NO_ERRORI)
+                    if (errore] == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
                         FigurePiane[i].area = (base * altezza)/2;
@@ -216,8 +208,7 @@ int main()
                     parametro_4[i].valore = 0;
                     FigurePiane[i].valore_errore = funzione_errori_cateti_ipotenusa(cateto_1, cateto_2, ipotenusa);
                     errore = FigurePiane[i].valore_errore;
-                    errore_triangolo[i] = FigurePiane[i].valore_errore;
-                    if (errore_triangolo[i] == NO_ERRORI)
+                    if (errore == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
                         FigurePiane[i].area = (cateto_1 * cateto_2)/2;
@@ -256,7 +247,6 @@ int main()
                 parametro_4[i].valore = 0;
                 FigurePiane[i].valore_errore = funzione_errore_trapezio(base_maggiore, base_minore, altezza);
                 errore = FigurePiane[i].valore_errore;
-                errore_trapezio[i] = FigurePiane[i].valore_errore;
                 if (errore == NO_ERRORI)
                 {
                     FigurePiane[i].stato_errore = "Nessun Errore";
@@ -300,7 +290,6 @@ int main()
                     parametro_4[i].valore = 0;
                     FigurePiane[i].valore_errore = funzione_errori_diagonali(diagonale_maggiore, diagonale_minore);
                     errore = FigurePiane[i].valore_errore;
-                    errore_rombo[i] = FigurePiane[i].valore_errore;
                     if (errore == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
@@ -330,7 +319,6 @@ int main()
                     parametro_4[i].valore = 0;
                     FigurePiane[i].valore_errore = funzione_errori_lato_altezza(altezza_relativa, lato_rombo);
                     errore = FigurePiane[i].valore_errore;
-                    errore_rombo[i] = FigurePiane[i].valore_errore;
                     if (errore == NO_ERRORI)
                     {
                         FigurePiane[i].stato_errore = "Nessun Errore";
@@ -364,7 +352,6 @@ int main()
                 {
                     printf("Lato deve essere un valore positivo \nLato inserito: %f\n", lato_quadrato);
                     FigurePiane[i].valore_errore = ERR_LATO;
-                    errore_quadrato[i] = FigurePiane[i].valore_errore;
                     errore = FigurePiane[i].valore_errore;
                     FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
                     FigurePiane[i].area = errore;
@@ -395,7 +382,6 @@ int main()
                 if (raggio <= 0)
                 {
                     FigurePiane[i].valore_errore = ERR_RAGGIO;
-                    errore_cerchio[i] = FigurePiane[i].valore_errore;
                     errore = FigurePiane[i].valore_errore;
                     FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
                     FigurePiane[i].area = errore;
@@ -444,7 +430,6 @@ int main()
                 {
                     FigurePiane[i].nome_figura = "POLIGONO";
                     FigurePiane[i].valore_errore = ERR_LATO;
-                    errore_poligoni_regolari[i] = FigurePiane[i].valore_errore;
                     errore = FigurePiane[i].valore_errore;
                     FigurePiane[i].stato_errore = "ERRORE RILEVATO: i valori di area e perimetro indicano l'errore specifico.";
                     FigurePiane[i].area = errore;
@@ -473,7 +458,8 @@ int main()
     oppure un errore specifico (nel caso di n=1) */
     if (n > 1)
     {
-        if (errore_triangolo[i] != NO_ERRORI || errore_rettangolo[i] != NO_ERRORI || errore_trapezio[i] != NO_ERRORI || errore_rombo[i] != NO_ERRORI || errore_quadrato[i] != NO_ERRORI || errore_cerchio[i] != NO_ERRORI || errore_poligoni_regolari[i] != NO_ERRORI)
+        if (FigurePiane[0].valore_errore != 0 || FigurePiane[1].valore_errore != 0 || FigurePiane[2].valore_errore != 0 || FigurePiane[3].valore_errore != 0 || FigurePiane[4].valore_errore != 0 || FigurePiane[5].valore_errore != 0 || FigurePiane[6].valore_errore != 0 || FigurePiane[7].valore_errore != 0 || FigurePiane[8].valore_errore != 0 || FigurePiane[9].valore_errore != 0 || FigurePiane[10].valore_errore != 0 || FigurePiane[11].valore_errore != 0 || FigurePiane[12].valore_errore != 0 || FigurePiane[13].valore_errore != 0 || FigurePiane[14].valore_errore != 0 || FigurePiane[15].valore_errore != 0 ||
+            FigurePiane[16].valore_errore != 0 || FigurePiane[17].valore_errore != 0 || FigurePiane[18].valore_errore != 0 || FigurePiane[19].valore_errore != 0)
         {
             return ERR_GENERICO;
         }
