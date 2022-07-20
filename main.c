@@ -67,7 +67,7 @@ int main()
         {
         printf("Di quante figure vuoi calcolare e stampare area e perimetro (MAX 30)?\n");
         scanf("%d",&n);
-        } while (n > 30);
+        } while (n > 20);
         for(i = 0; i < n; i++)
         {
             unsigned int scelta_figura_geometrica;
